@@ -1,0 +1,12 @@
+# object files and applications
+*.o
+*.exe
+bin/
+obj/
+
+*.cbp
+*.depend
+*.layout
+*.geany
+
+

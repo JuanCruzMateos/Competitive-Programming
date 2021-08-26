@@ -1,0 +1,48 @@
+OJO -> me esta pasando head por valor -> * solo indica que se trata de un punto
+    -> si fuese por valor el parametro deberia ser struct ListNode** head
+
+
+struct ListNode* deleteDuplicates(struct ListNode* head){
+    struct ListNode *act, *ant, *aux, *elim;
+    int elimine;
+
+    if (head != NULL) {
+        while (head != NULL && head->next != NULL && head->val == head->next->val) {
+            while (head->next != NULL && head->val == head->next->val) {
+                elim = head;
+                head = head->next;
+                free(elim);
+            }
+            elim = head;
+            head = head->next;
+            free(elim);
+        }
+        if (head != NULL && head->next != NULL) {
+            aux = head;
+            ant = head->next;
+            act = ant->next;
+            while (act != NULL) {
+                elimine = 0;
+                while (act != NULL && ant->val == act->val) {
+                    elimine = 1;
+                    ant->next = act->next;
+                    free(act);
+                    act = ant->next;
+                }
+                if (elimine) {
+                    aux->next = act;
+                    free(ant);
+                    ant = act;
+                    if (act != NULL)
+                        act = act->next;
+                } else {
+                    aux = ant;
+                    ant = act;
+                    act = act->next;
+                }
+            }
+        }
+    }
+    return head;
+}
+

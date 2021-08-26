@@ -1,0 +1,34 @@
+Java:
+
+public ListNode deleteDuplicates(ListNode head) {
+    ListNode current = head;
+    while (current != null && current.next != null) {
+        if (current.next.val == current.val) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
+        }
+    }
+    return head;
+}
+
+void elimDuplicados(TLista L) {
+    TLista act, ant;
+
+    if (L != NULL) {
+        ant = L;
+        act = L->sig;
+        while (ant != NULL && act != NULL) {
+            if (ant->dato == act->dato) {
+                elim = act;
+                ant->sig = act->sig;
+                act = act->sig;
+                free(elim);
+            } else {
+                ant = act;
+                if (act != NULL)
+                    act = act->sig;
+            }
+        }
+    }
+}
